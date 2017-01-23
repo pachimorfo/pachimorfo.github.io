@@ -305,7 +305,7 @@ var PlayScene = {
       this.Deathzones = this.map.createLayer('Deathzones');
       //Colisiones con el plano de muerte y con el plano de muerte y con suelo.
       this._bat = this.game.add.group();
-      var b = new Bat(this.game, 'batattack',10,40);
+      var b = new Bat(this.game, 'batattack',10,4416);
       this._bat.add(b);
       this._bat.add(new Bat(this.game, 'batattack', 10,8640));
       this._bat.add(new Bat(this.game, 'batattack', 10,10816));
