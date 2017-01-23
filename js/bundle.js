@@ -408,13 +408,7 @@ var PlayScene = {
       this.Deathzones.setScale(2,2);
       this.Suelo.resizeWorld(); //resize world and adjust to the screen
       
-      //nombre de la animación, frames, framerate, isloop
-      /*this._rush.animations.add('run',
-                    Phaser.Animation.generateFrameNames('rush_run',1,5,'',2),10,true);
-      this._rush.animations.add('stop',
-                    Phaser.Animation.generateFrameNames('rush_idle',1,1,'',2),0,false);
-      this._rush.animations.add('jump',
-                     Phaser.Animation.generateFrameNames('rush_jump',2,2,'',2),0,false);*/
+
       this.configure();
   },
     
@@ -431,59 +425,7 @@ var PlayScene = {
         var collisionWithTilemap = this.game.physics.arcade.collide(this._rush, this.Suelo);
         var movement = this.GetMovement();
         this._puntos.text = 'Puntuación: ' + this._ptos;
-        
-        //transitions
-        /*switch(this._playerState)
-        {
-            case PlayerState.STOP:
-            case PlayerState.RUN:
-                if(this.isJumping(collisionWithTilemap)){
-                    this._playerState = PlayerState.JUMP;
-                    this._initialJumpHeight = this._rush.y;
-                    this._rush.animations.play('jump');
-                }
-                else{
-                    if(movement !== Direction.NONE){
-                        this._playerState = PlayerState.RUN;
-                        this._rush.animations.play('run');
-                    }
-                    else{
-                        this._playerState = PlayerState.STOP;
-                        this._rush.animations.play('stop');
-                    }
-                }    
-                break;
-                
-            case PlayerState.JUMP:
-                
-                var currentJumpHeight = this._rush.y - this._initialJumpHeight;
-                this._playerState = (currentJumpHeight*currentJumpHeight < this._jumpHight*this._jumpHight)
-                    ? PlayerState.JUMP : PlayerState.FALLING;
-                break;
-                
-            case PlayerState.FALLING:
-                if(this.isStanding()){
-                    if(movement !== Direction.NONE){
-                        this._playerState = PlayerState.RUN;
-                        this._rush.animations.play('run');
-                    }
-                    else{
-                        this._playerState = PlayerState.STOP;
-                        this._rush.animations.play('stop');
-                    }
-                }
-                break;     
-        }
-        //States
-        switch(this._playerState){
-                
-            case PlayerState.STOP:
-                moveDirection.x = 0;
-                break;
-            case PlayerState.JUMP:
-            case PlayerState.RUN:
-            case PlayerState.FALLING:*/
-            //Colisiion con la pared. Reseteamos el salto.
+    
                 if(collisionWithTilemap){
                     this._enPared = true;
                     this._saltoPared = false;
@@ -607,7 +549,8 @@ var PlayScene = {
         this._rush.body.gravity.x = 0;
         this._rush.body.velocity.x = 0;
         this._ptos = 0;
-
+        this.loopeo.stop();
+        this.intro.stop();
         
         this.game.state.start('play');    
     },
@@ -623,6 +566,8 @@ var PlayScene = {
         this._rush.body.gravity.x = 0;
         this._rush.body.velocity.x = 0;
         this._ptos = 0;
+        this.loopeo.stop();
+        this.intro.stop();
         
         this.game.state.start('menu');    
     },
