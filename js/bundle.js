@@ -306,10 +306,9 @@ var PlayScene = {
       //Colisiones con el plano de muerte y con el plano de muerte y con suelo.
       this._bat = this.game.add.group();
       var b = new Bat(this.game, 'batattack',10,40);
-      console.log(b.x);
       this._bat.add(b);
-      //this._bat.push(new Bat(this.game, 'batmove', 10,8640));
-      //this._bat.push(new Bat(this.game, 'batmove', 10,10816));
+      this._bat.add(new Bat(this.game, 'batattack', 10,8640));
+      this._bat.add(new Bat(this.game, 'batattack', 10,10816));
       this._rush = this.game.add.sprite(100,2, 'DimitriI');
       this._rush.scale.setTo(2,2);
       this._rush.animations.add('DimitriI');
@@ -318,22 +317,8 @@ var PlayScene = {
       
 
      
-      
-     // this._rush.animations.add('rush');
-     // this._rush.animations.add('Paracaidas');
-      //4416
-   
-
-      /*for(var i = 0; i < this._bat.length; i++) {
-      	this._bat[i].velx = 150;
-      	this._bat[i].vely = 0;
-      	this._bat[i].scale.setTo(1.5,1.5);
-        this._bat[i].animations.add('batattack');
-        this._bat[i].animations.add('batmove');
-      	
-  	  }*/
-  	  console.log(this._bat.length);
-  	  console.log(this._bat[0]);
+    
+  
       this._pause = this.game.add.text(this.w - 100, 20, 'Pause', { font: '24px Arial', fill: '#ffj' });
       this._pause.fixedToCamera = true;
       this._pause.inputEnabled = true;
@@ -357,7 +342,7 @@ var PlayScene = {
         self._bat.forEach(function (b){
         	b.body.velx = 0;                    
           	b.body.vely = 0;    
-          	console.log(b.x);
+          	
             
 
         });
